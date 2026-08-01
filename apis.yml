@@ -1,8 +1,14 @@
 aid: speedybrand
 name: SpeedyBrand
-description: 'SpeedyBrand is a company surfaced as a portfolio company of gv and added to the API Evangelist
-  network as a stub for enrichment. Sector: enterprise. This profile is a lead awaiting the enrichment
-  pipeline.'
+description: 'SpeedyBrand (Speedy) is an AI-powered content marketing and SEO platform that
+  helps businesses generate SEO-optimized blog posts, social media content, AI images, and
+  Google Ads, along with keyword research, competitor analysis, technical SEO audits, and
+  backlink recommendations. It generates content in 49+ languages across 100+ regions and
+  offers one-click publishing plus integrations with WordPress, Webflow, Shopify, Zapier,
+  Google Search Console, LinkedIn, Twitter, Instagram, and Facebook. Backed by GV (Google
+  Ventures), Speedy targets small businesses and enterprises seeking to scale organic
+  traffic. The product is a no-code SaaS web application; no public developer API or API
+  documentation is published as of this profile.'
 url: https://raw.githubusercontent.com/api-evangelist/speedybrand/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -10,12 +16,30 @@ x-backed-by:
 - gv
 x-tier: stub
 x-tier-reason: portfolio-lead
+accessModel:
+  pricing: unknown
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Unknown
+  confidence: low
+  source: []
+  generated: '2026-07-22'
+  method: derived
+image: https://speedybrand.io/favicon.ico
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-21'
 tags:
 - Company
 - Enterprise
+- SEO
+- Content Marketing
+- Artificial Intelligence
+- Content Generation
+- Marketing
+- SaaS
 apis: []
 maintainers:
 - FN: Kin Lane
@@ -25,3 +49,22 @@ maintainers:
 common:
 - type: Website
   url: https://speedybrand.io
+- type: Pricing
+  url: https://speedybrand.io/pricing
+- type: SignUp
+  url: https://speedybrand.io/login
+- type: Blog
+  url: https://speedybrand.io/blogs
+- type: HelpCenter
+  url: https://learn.speedybrand.io/
+- type: TermsOfService
+  url: https://speedybrand.io/terms-and-conditions
+- type: PrivacyPolicy
+  url: https://speedybrand.io/privacy-policy
+- type: DomainSecurity
+  url: security/speedybrand-domain-security.yml
+x-enrichment:
+  date: '2026-07-21'
+  status: minimal
+  artifacts_added: 1
+  pass: local-v1
