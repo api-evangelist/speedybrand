@@ -30,7 +30,7 @@ accessModel:
 image: https://speedybrand.io/favicon.ico
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-21'
+modified: '2026-08-13'
 tags:
 - Company
 - Enterprise
@@ -55,16 +55,46 @@ common:
   url: https://speedybrand.io/login
 - type: Blog
   url: https://speedybrand.io/blogs
-- type: HelpCenter
-  url: https://learn.speedybrand.io/
 - type: TermsOfService
   url: https://speedybrand.io/terms-and-conditions
 - type: PrivacyPolicy
   url: https://speedybrand.io/privacy-policy
+- type: GitHubOrganization
+  url: https://github.com/SpeedyBrand
 - type: DomainSecurity
   url: security/speedybrand-domain-security.yml
+- type: Plans
+  url: plans/speedybrand-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/speedybrand-rate-limits.yml
+- type: LLMsTxt
+  url: llms/speedybrand-llms.txt
+- type: Lifecycle
+  url: lifecycle/speedybrand-lifecycle.yml
 x-enrichment:
-  date: '2026-07-21'
+  date: '2026-08-13'
   status: minimal
-  artifacts_added: 1
+  artifacts_added: 5
   pass: local-v1
+x-coverage:
+  state: gated
+  reason: marketplace-only
+  detail: >-
+    SpeedyBrand's only programmatic surface is a "Speedy" app inside Zapier exposing a
+    New Blog Post trigger; its own developer surface has decayed away — the help centre
+    at learn.speedybrand.io returns nginx 502 on every path, the former ChatGPT-plugin
+    host api.speedybrand.io completes a TLS handshake but never sends an HTTP response,
+    and the SpeedyBrand/docs GitHub repo is an unmodified Mintlify starter whose
+    openapi.json is Mintlify's sample Plant Store spec.
+  evidence:
+  - url: https://learn.speedybrand.io/
+    status: 502
+  - url: https://api.speedybrand.io/.well-known/ai-plugin.json
+    status: 0
+  - url: https://speedybrand.io/developers
+    status: 404
+  - url: https://speedybrand.io/openapi.json
+    status: 404
+  - url: https://zapier.com/apps/speedy/integrations
+    status: 200
+  checked: '2026-08-13'
