@@ -1,0 +1,65 @@
+generated: '2026-08-13'
+method: probed
+source: live HTTPS probes of speedybrand.io, learn.speedybrand.io, api.speedybrand.io + the SpeedyBrand GitHub organization
+description: >-
+  SpeedyBrand publishes no versioning policy, no deprecation policy, no SLA, no status
+  page and no changelog. It has no live API to version. What this file records instead
+  is a decayed developer surface: SpeedyBrand once operated one (a ChatGPT plugin on
+  api.speedybrand.io and a help centre at learn.speedybrand.io), and both hosts are now
+  unreachable while the company and its marketing site remain fully live and selling.
+  Recorded from probes, not from any provider announcement — SpeedyBrand has published
+  no deprecation or sunset notice for any of it.
+versioning: null
+deprecation:
+  policy_url: null
+  sunset_header: false
+  note: No deprecation or sunset policy is published, and no notice was issued for the retired surfaces below.
+sla: null
+status_page: null
+changelog: null
+deprecated_operations: []
+retired_surfaces:
+  - surface: ChatGPT plugin / API host
+    host: https://api.speedybrand.io
+    state: unreachable
+    evidence: >-
+      DNS resolves to 3.23.186.200 and 16.59.175.228. TCP/443 accepts a TLSv1.2
+      handshake presenting a valid certificate for CN=seoaudit.speedybrand.io
+      (verification OK), so the listener is live, but no HTTP response is returned on
+      any path, on either IP, at timeouts of 12s, 15s and 25s (curl exit 28, zero bytes
+      received). Third-party plugin directories still list the plugin as
+      "api-speedybrand-io".
+    observed: '2026-08-13'
+  - surface: Help centre / documentation
+    host: https://learn.speedybrand.io
+    state: down
+    http_status: 502
+    evidence: >-
+      Returns an nginx "502 Bad Gateway" page (122-byte body) for the root and for every
+      path probed, including /errors, /api and /api-reference. Still linked from the
+      live site navigation as "Learn" (https://speedybrand.io/learn redirects here) and
+      was wired in this profile as the HelpCenter link property until this pass.
+    observed: '2026-08-13'
+  - surface: SEO audit API host
+    host: https://seoaudit.speedybrand.io
+    state: unreachable
+    evidence: >-
+      Discovered from the TLS certificate subject presented by api.speedybrand.io.
+      Resolves to 3.142.181.226 and 18.225.145.212 but returns no HTTP response.
+    observed: '2026-08-13'
+documentation_repo:
+  url: https://github.com/SpeedyBrand/docs
+  state: unstarted
+  last_push: '2026-05-21'
+  evidence: >-
+    The organization's only public repository is an unmodified Mintlify Starter Kit —
+    docs.json still carries name "Mintlify Starter Kit", README.md is Mintlify's own
+    starter README, AGENTS.md still contains the "Customize this file for your project"
+    placeholder, and api-reference/openapi.json is Mintlify's sample "OpenAPI Plant
+    Store" spec with servers[] http://sandbox.mintlify.com. No SpeedyBrand content was
+    ever written into it. This spec was deliberately NOT harvested: it fails the
+    ownership check and does not describe SpeedyBrand.
+notes:
+  - >-
+    No StatusPage or Deprecation pointer is emitted in apis.yml, because SpeedyBrand
+    publishes neither. This artifact records their absence and the surface decay.

@@ -1,0 +1,53 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: SpeedyBrand
+providerId: speedybrand
+generated: '2026-08-13'
+created: '2026-08-13'
+modified: '2026-08-13'
+method: searched
+source: https://speedybrand.io/fair-use-policy
+sources:
+  - https://speedybrand.io/fair-use-policy
+  - https://speedybrand.io/pricing
+  - https://speedybrand.io/terms-and-conditions
+tags:
+  - Rate Limiting
+  - SEO
+  - Content Marketing
+description: >-
+  SpeedyBrand publishes NO rate limits. There is no public API to rate-limit: the
+  product is a no-code SaaS web application, no developer portal or API reference is
+  reachable (see x-coverage in apis.yml), and the only usage-governing document the
+  provider publishes is a prose Fair Use Policy that contains no numbers.
+  The Fair Use Policy states only that "users with exceptionally high activity levels
+  may be subject to transition to a different service model" — a commercial
+  escalation clause, not a throttling contract. No response headers, no throttled
+  status code, and no per-key/per-account window are documented anywhere, so none are
+  recorded. This is an honest zero, not an unchecked field.
+limit_count: 0
+limits: []
+headers: {}
+responseCodes: {}
+quotas:
+  - name: Premium blogs (Professional tier)
+    scope: account
+    limit: 50
+    timeFrame: month
+    source: https://speedybrand.io/pricing
+    note: >-
+      A product entitlement published on the pricing page, NOT an API rate limit. Recorded
+      here for completeness because it is the only numeric usage ceiling the provider
+      publishes. Also see plans/speedybrand-plans-pricing.yml.
+  - name: Pages indexed (Professional tier)
+    scope: account
+    limit: 1000
+    timeFrame: subscription
+    source: https://speedybrand.io/pricing
+    note: Product entitlement, not an API rate limit.
+notes:
+  - >-
+    Probed for a rate-limit reference at speedybrand.io/api, /docs, /developers,
+    /developer — all HTTP 404. The documented docs host learn.speedybrand.io returns
+    nginx 502 on every path.

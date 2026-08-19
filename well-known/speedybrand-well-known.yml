@@ -1,0 +1,121 @@
+generated: '2026-08-13'
+method: probed
+source: live HTTPS probes of every SpeedyBrand host that resolves in DNS
+description: >-
+  Results of probing the /.well-known/ discovery surface for every SpeedyBrand host
+  that resolves in DNS. apis.yml carries no apis[] entries and no OpenAPI servers[]
+  exist, so the host set was built from the website host, the documented help-centre
+  host, and the two API-era hosts that still have DNS records
+  (api.speedybrand.io, seoaudit.speedybrand.io — the latter discovered from the
+  subject CN on api.speedybrand.io's TLS certificate).
+  EVERY path missed. speedybrand.io returns a clean text/html 404 for all of them,
+  learn.speedybrand.io returns an nginx 502 Bad Gateway for all of them, and
+  api.speedybrand.io / seoaudit.speedybrand.io complete a TLS handshake on port 443
+  but never send an HTTP response (curl exit 28, no bytes received, at 12s/15s/25s).
+  No WellKnown or SecurityTxt pointer is emitted in apis.yml because not one path
+  returned a real document — a recorded absence, not a served surface.
+hosts:
+  - host: https://speedybrand.io
+    reachable: true
+    note: Live marketing site (Next.js). Clean 404 on every /.well-known/ path.
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /.well-known/agent.json
+        status: 404
+      - path: /.well-known/mcp.json
+        status: 404
+  - host: https://learn.speedybrand.io
+    reachable: false
+    note: >-
+      Documented help centre / docs host, linked from the site nav as "Learn" and
+      wired in apis.yml as HelpCenter. Origin is down — nginx returns 502 Bad Gateway
+      (122-byte body) for the root and for every path probed.
+    documents:
+      - path: /.well-known/security.txt
+        status: 502
+      - path: /.well-known/openid-configuration
+        status: 502
+      - path: /.well-known/oauth-authorization-server
+        status: 502
+      - path: /.well-known/api-catalog
+        status: 502
+      - path: /.well-known/ai-plugin.json
+        status: 502
+      - path: /.well-known/agent-card.json
+        status: 502
+      - path: /.well-known/agent.json
+        status: 502
+  - host: https://api.speedybrand.io
+    reachable: false
+    note: >-
+      Former API host — it fronted SpeedyBrand's ChatGPT plugin, which is still listed
+      in third-party plugin directories as "api-speedybrand-io". DNS resolves
+      (3.23.186.200, 16.59.175.228) and TCP/443 accepts a TLSv1.2 handshake presenting
+      a valid certificate for CN=seoaudit.speedybrand.io, but the backend never returns
+      an HTTP response on any path, on either IP, at timeouts up to 25s.
+    documents:
+      - path: /.well-known/ai-plugin.json
+        status: 0
+        error: connection timed out after TLS handshake, no bytes received
+      - path: /.well-known/security.txt
+        status: 0
+        error: connection timed out after TLS handshake, no bytes received
+      - path: /.well-known/agent-card.json
+        status: 0
+        error: connection timed out after TLS handshake, no bytes received
+      - path: /.well-known/agent.json
+        status: 0
+        error: connection timed out after TLS handshake, no bytes received
+      - path: /.well-known/openid-configuration
+        status: 0
+        error: connection timed out after TLS handshake, no bytes received
+      - path: /.well-known/oauth-authorization-server
+        status: 0
+        error: connection timed out after TLS handshake, no bytes received
+      - path: /.well-known/api-catalog
+        status: 0
+        error: connection timed out after TLS handshake, no bytes received
+  - host: https://seoaudit.speedybrand.io
+    reachable: false
+    note: >-
+      Discovered from the TLS certificate subject on api.speedybrand.io. Resolves
+      (3.142.181.226, 18.225.145.212) but, like api.speedybrand.io, never returns an
+      HTTP response.
+    documents:
+      - path: /.well-known/security.txt
+        status: 0
+        error: connection timed out, no bytes received
+      - path: /.well-known/agent-card.json
+        status: 0
+        error: connection timed out, no bytes received
+      - path: /.well-known/agent.json
+        status: 0
+        error: connection timed out, no bytes received
+      - path: /.well-known/ai-plugin.json
+        status: 0
+        error: connection timed out, no bytes received
+hosts_not_resolving:
+  - www.speedybrand.io
+  - app.speedybrand.io
+  - docs.speedybrand.io
+  - developer.speedybrand.io
+  - status.speedybrand.io
+  - trust.speedybrand.io
+  - security.speedybrand.io
+  - mcp.speedybrand.io
+  - blog.speedybrand.io
+summary:
+  paths_probed: 26
+  documents_found: 0
+  pointer_emitted: false

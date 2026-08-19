@@ -1,0 +1,100 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: SpeedyBrand
+providerId: speedybrand
+generated: '2026-08-13'
+created: '2026-08-13'
+modified: '2026-08-13'
+method: searched
+source: https://speedybrand.io/pricing
+sources:
+  - https://speedybrand.io/pricing
+  - https://speedybrand.io/enterprise
+tags:
+  - SEO
+  - Content Marketing
+  - Artificial Intelligence
+  - SaaS
+description: >-
+  SpeedyBrand publishes two self-serve seat/subscription tiers on its public pricing
+  page, billed monthly with a stated 30% discount when billed annually (the annual
+  per-month figure is not printed on the page, so only the monthly price is recorded
+  here). Pricing is for the end-user SaaS product; NO tier mentions API access,
+  developer features, or programmatic quotas, and there is no published per-call or
+  usage-based metering. A separate "AI For Enterprise" page exists and routes to a
+  Calendly booking rather than a priced tier, so it is recorded as a contact-sales
+  entry with no published price.
+plan_count: 2
+currency: USD
+billing_periods:
+  - monthly
+  - annual
+annual_discount: 30% yearly
+plans:
+  - id: speedybrand-basic
+    name: Basic
+    type: subscription
+    price: '69'
+    currency: USD
+    timeFrame: month
+    description: Start with essential tools to boost your online presence.
+    limits:
+      - label: Personalised content (blogs and socials)
+        value: unlimited
+      - label: Regions and languages targeted
+        value: 100+
+    features:
+      - SEO Strategy & Topic Recommendations
+      - Competitor Analysis to stand out
+      - Built-in Keyword Research
+      - Target latest Google trends
+      - Unlimited personalised content - blogs and socials
+      - Seamless one-click publishing to websites and social media
+      - SEO optimized blogs and socials
+      - Technical SEO analysis and Reports
+      - Target 100+ regions and languages
+      - Backlinks
+      - Ad copies that convert
+      - AI powered images you own
+      - Auto interlinking of pages for domain authority
+    overage: not published
+    api_access: not mentioned
+  - id: speedybrand-professional
+    name: Professional
+    type: subscription
+    price: '299'
+    currency: USD
+    timeFrame: month
+    description: Unlock enhanced features and premium content to supercharge your business.
+    limits:
+      - label: Premium blogs
+        value: 50
+      - label: Pages indexed
+        value: 1000
+    features:
+      - Everything in Basic plan
+      - Save time with 50 premium blogs
+      - Index upto 1000 pages
+      - Premium support
+      - Local SEO
+      - 'SEO Agent (Coming Soon)'
+    overage: not published
+    api_access: not mentioned
+contact_sales:
+  - name: AI For Enterprise
+    url: https://speedybrand.io/enterprise
+    price: not published
+    booking: https://calendly.com/speedybrand-marielou
+    note: >-
+      Linked from the site nav as "AI For Enterprise". No tier, price, or quota is
+      published; the call to action is a Calendly booking.
+notes:
+  - >-
+    "SEO Agent (Coming Soon)" is listed as an unreleased Professional-tier feature. It is
+    recorded verbatim as published and is not treated as a shipped agent surface.
+  - >-
+    The pricing page footer also links a Fair Use Policy
+    (https://speedybrand.io/fair-use-policy, HTTP 200), which is the only usage-limit
+    document the provider publishes. It is not a rate-limit specification — see
+    rate-limits/speedybrand-rate-limits.yml.
