@@ -98,3 +98,22 @@ notes:
     (https://speedybrand.io/fair-use-policy, HTTP 200), which is the only usage-limit
     document the provider publishes. It is not a rate-limit specification — see
     rate-limits/speedybrand-rate-limits.yml.
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - subscription
+  units: []
+  plans:
+  - name: Basic
+    access: other
+    model: subscription
+    model_how: stated
+    units: []
+    periods: []
+  - name: Professional
+    access: other
+    model: subscription
+    model_how: stated
+    units: []
+    periods: []
